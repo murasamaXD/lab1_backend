@@ -1,0 +1,108 @@
+/* Основні налаштування та відносні одиниці [cite: 214, 239] */
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --accent: #3498db;
+    --header-bg: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Стилі шапки [cite: 207, 238] */
+.header {
+    background: var(--header-bg);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; }
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s; /* Анімація [cite: 215] */
+}
+
+.nav-list a:hover { color: var(--accent); }
+
+.burger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Адаптивна сітка (Grid) [cite: 212, 241, 289] */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки для десктопа */
+    gap: 2rem;
+    padding: 3rem 5%;
+}
+
+/* Стиль картки та ефекти при наведенні [cite: 215, 248, 297] */
+.course-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    opacity: 0; /* Для анімації появи в JS */
+    transform: translateY(20px);
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-content { padding: 1.5rem; }
+
+/* Медіа-запити (Адаптивність) [cite: 213, 243-244, 290] */
+@media (max-width: 1200px) {
+    .course-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .burger-btn { display: block; }
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--header-bg);
+        padding: 1rem 0;
+        text-align: center;
+    }
+    .nav-list.active { display: flex; } /* Відкриття меню [cite: 247, 295] */
+    .course-grid { grid-template-columns: 1fr; }
+}
+
+/* Футер [cite: 209, 236] */
+.footer {
+    background: #eee;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
